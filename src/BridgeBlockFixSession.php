@@ -61,7 +61,6 @@ class BridgeBlockFixSession {
 		if (!$this->player->get()->interactBlock($vBlockPos, $data->getFace(), $clickPos) && !$this->isFailedPrediction($data)) {
 			$this->onFailedBlockAction($vBlockPos, $data->getFace());
 		}
-		return;
 	}
 
 	private static function validateFacing(int $facing) : void {
@@ -80,7 +79,6 @@ class BridgeBlockFixSession {
 			if ($face !== null) {
 				$sidePos = $blockPos->getSide($face);
 
-				/** @var Vector3[] $blocks */
 				array_push($blocks, ...$sidePos->sidesArray()); //getAllSides() on each of these will include $blockPos and $sidePos because they are next to each other
 			} else {
 				$blocks[] = $blockPos;
